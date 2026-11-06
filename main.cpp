@@ -80,12 +80,45 @@ int spausdintiLentele(ostream &out, string kat[], string pav[], double kaina[], 
     return kiek;
 }
 
+void spausdintiViso(ostream &out, string kat[], double kaina[], int kiekis[], int n) {
+    double prie = 0, po = 0;
+    for (int i = 0; i < n; i++) prie += eilutesSuma(kaina[i], kiekis[i]);
+    for (int k = 1; k <= 3; k++) po += kategorijosSuma(kat, kaina, kiekis, n, kategorijosVardas(k));
+    out << "Suma pries nuolaidas: " << prie << " EUR\n";
+    out << "Bendra nuolaida:      " << prie - po << " EUR\n";
+    out << "Moketina suma:        " << po << " EUR\n";
+}
+
+void spausdintiKategorijas(ostream &out, string kat[], double kaina[], int kiekis[], int n) {
+    for (int k = 1; k <= 3; k++)
+        out << left << setw(12) << kategorijosVardas(k) << right << setw(10)
+            << kategorijosSuma(kat, kaina, kiekis, n, kategorijosVardas(k)) << " EUR\n";
+}
+
 int main() {
     cout << fixed << setprecision(2);
     string kat[MAX], pav[MAX];
     double kaina[MAX];
-    int kiekis[MAX], n = 0;
+    int kiekis[MAX], n = 0, pasirinkimas = 0;
     if (!nuskaityti("uzsakymas.txt", kat, pav, kaina, kiekis, n)) return 1;
-    spausdintiLentele(cout, kat, pav, kaina, kiekis, n, "");
+    while (pasirinkimas != 7) {
+        cout << "\n===== DVIRACIU PARDUOTUVES UZSAKYMAS =====\n"
+                "1. Perziureti visas uzsakymo prekes\n2. Perziureti pasirinktos kategorijos prekes\n"
+                "3. Perziureti viso uzsakymo sumas\n4. Perziureti sumas pagal kategorijas\n"
+                "5. Parodyti visa uzsakymo ataskaita\n6. Issaugoti visa ataskaita i faila\n7. Iseiti\n";
+        pasirinkimas = ivestiPasirinkima("Jusu pasirinkimas: ", 1, 7);
+        if (pasirinkimas == 1) spausdintiLentele(cout, kat, pav, kaina, kiekis, n, "");
+        else if (pasirinkimas == 2) {
+            cout << "1 - Dviraciai\n2 - Dalys\n3 - Aksesuarai\n";
+            string k = kategorijosVardas(ivestiPasirinkima("Pasirinkite kategorija: ", 1, 3));
+            if (spausdintiLentele(cout, kat, pav, kaina, kiekis, n, k) == 0)
+                cout << "Kategorijoje " << k << " prekiu uzsakyme nera.\n";
+            cout << k << " moketina suma: " << kategorijosSuma(kat, kaina, kiekis, n, k) << " EUR\n";
+        }
+        else if (pasirinkimas == 3) spausdintiViso(cout, kat, kaina, kiekis, n);
+        else if (pasirinkimas == 4) spausdintiKategorijas(cout, kat, kaina, kiekis, n);
+        else if (pasirinkimas == 5 || pasirinkimas == 6) cout << "Si funkcija dar nepadaryta.\n";
+        else cout << "Viso gero!\n";
+    }
     return 0;
 }
