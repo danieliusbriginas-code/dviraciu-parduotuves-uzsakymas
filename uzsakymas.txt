@@ -1,0 +1,31 @@
+30
+Dviraciai;KROSS Level 4.0;950.00;2
+Dviraciai;KROSS Hexagon 8.0;920.00;1
+Dviraciai;KROSS Mini 4.0;290.00;3
+Dviraciai;KROSS Level 3.0;710.00;2
+Dviraciai;KROSS Level 5.0;1130.00;1
+Dviraciai;KROSS Level 6.0;1180.00;2
+Dviraciai;KROSS Level 7.0;1650.00;1
+Dviraciai;KROSS Level 10.0;2120.00;1
+Dviraciai;KROSS Esker 5.0;1650.00;2
+Dviraciai;KROSS Esker 6.0;1930.00;1
+Dalys;Shimano CN-HG53 grandine;20.00;12
+Dalys;MAXXIS Aspen padanga;52.00;4
+Dalys;MAXXIS Rekon Race padanga;57.00;6
+Dalys;Shimano CN-HG40 grandine;9.00;15
+Dalys;Shimano CN-M7100 grandine;35.00;9
+Dalys;Shimano CN-M8100 grandine;45.00;10
+Dalys;Shimano CN-M9100 grandine;65.00;3
+Dalys;MAXXIS Minion DHF 29x2.50 padanga;60.00;8
+Dalys;MAXXIS Minion DHF 29x2.60 padanga;65.00;5
+Dalys;MAXXIS Rambler TR 50-622 padanga;55.00;11
+Aksesuarai;KROSS Capitalo salmas;45.00;10
+Aksesuarai;KASK Sintesi salmas;100.00;2
+Aksesuarai;KROSS Aqua Stop 16 L krepsys;25.00;5
+Aksesuarai;KROSS Pure 500 ml Yellow gertuve;5.00;20
+Aksesuarai;KROSS Titan 140 PSI pompa;43.00;4
+Aksesuarai;KROSS Sport Ultralight 750 ml gertuve;8.00;12
+Aksesuarai;KROSS KZF 450 750 mm spyna;65.00;6
+Aksesuarai;KROSS Quark F2.0 USB priekinis zibintas;12.00;9
+Aksesuarai;KROSS HPG 2.0 mini pompa;15.00;10
+Aksesuarai;KROSS Safety F 70 lm USB-C priekinis zibintas;16.00;14
