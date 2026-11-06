@@ -95,6 +95,26 @@ void spausdintiKategorijas(ostream &out, string kat[], double kaina[], int kieki
             << kategorijosSuma(kat, kaina, kiekis, n, kategorijosVardas(k)) << " EUR\n";
 }
 
+// Ta pati funkcija veikia ir ekranui (cout), ir failui (ofstream)
+void spausdintiAtaskaita(ostream &out, string kat[], string pav[], double kaina[], int kiekis[], int n) {
+    out << "===== UZSAKYMO ATASKAITA =====\n\n";
+    spausdintiLentele(out, kat, pav, kaina, kiekis, n, "");
+    out << "\n";
+    spausdintiViso(out, kat, kaina, kiekis, n);
+    out << "\nKategoriju suvestine (moketina suma):\n";
+    spausdintiKategorijas(out, kat, kaina, kiekis, n);
+}
+
+bool saugotiAtaskaita(string failas, string kat[], string pav[], double kaina[], int kiekis[], int n) {
+    ofstream f(failas);  // ofstream senus failo duomenis perraso
+    if (!f.is_open()) { cout << "Klaida: nepavyko atidaryti failo " << failas << " rasymui.\n"; return false; }
+    f << fixed << setprecision(2);
+    spausdintiAtaskaita(f, kat, pav, kaina, kiekis, n);
+    f.close();
+    if (f.fail()) cout << "Klaida: nepavyko irasyti duomenu i faila.\n";
+    return !f.fail();
+}
+
 int main() {
     cout << fixed << setprecision(2);
     string kat[MAX], pav[MAX];
@@ -117,7 +137,11 @@ int main() {
         }
         else if (pasirinkimas == 3) spausdintiViso(cout, kat, kaina, kiekis, n);
         else if (pasirinkimas == 4) spausdintiKategorijas(cout, kat, kaina, kiekis, n);
-        else if (pasirinkimas == 5 || pasirinkimas == 6) cout << "Si funkcija dar nepadaryta.\n";
+        else if (pasirinkimas == 5) spausdintiAtaskaita(cout, kat, pav, kaina, kiekis, n);
+        else if (pasirinkimas == 6) {
+            if (saugotiAtaskaita("ataskaita.txt", kat, pav, kaina, kiekis, n))
+                cout << "Ataskaita issaugota faile ataskaita.txt.\n";
+        }
         else cout << "Viso gero!\n";
     }
     return 0;
